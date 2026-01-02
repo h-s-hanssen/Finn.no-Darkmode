@@ -1,9 +1,8 @@
 name: Build Chrome extension zip
 
 on:
-  push:
-    tags:
-      - "v*.*.*"
+  release:
+    types: [published]
   workflow_dispatch: {}
 
 permissions:
@@ -13,18 +12,14 @@ jobs:
   zip:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Verify extension files exist
-        run: |
-          test -f manifest.json
-          test -f content.js
-          test -f dark.css
+      - name: Verify manifest exists
+        run: test -f manifest.json
 
       - name: Create store-ready ZIP (root contents)
         run: |
-          ZIP_NAME="finn-darkmode-${GITHUB_REF_NAME}.zip"
+          ZIP_NAME="finn-darkmode-${{ github.event.release.tag_name }}.zip"
           zip -r "$ZIP_NAME" . \
             -x ".git/*" \
             -x ".github/*" \
@@ -33,13 +28,7 @@ jobs:
             -x "*__MACOSX*" \
             -x "*.DS_Store"
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: finn-darkmode-${{ github.ref_name }}
-          path: finn-darkmode-${{ github.ref_name }}.zip
-
-      - name: Attach ZIP to GitHub Release
+      - name: Attach ZIP to the Release
         uses: softprops/action-gh-release@v2
         with:
-          files: finn-darkmode-${{ github.ref_name }}.zip
+          files: finn-darkmode-${{ github.event.release.tag_name }}.zip
