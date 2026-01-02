@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "FINN.no Dark mode",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Dark mode for finn.no.",
   "host_permissions": ["https://www.finn.no/*", "https://finn.no/*"],
   "content_scripts": [
@@ -11,5 +11,11 @@
       "css": ["dark.css"],
       "run_at": "document_start"
     }
-  ]
+  ],
+  "icons": {
+  "16": "icons/icon16.png",
+  "32": "icons/icon32.png",
+  "48": "icons/icon48.png",
+  "128": "icons/icon128.png"
+}
 }
