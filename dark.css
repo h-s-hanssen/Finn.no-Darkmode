@@ -8,6 +8,36 @@ html.finn-darkmode {
 html.finn-darkmode img,
 html.finn-darkmode video,
 html.finn-darkmode canvas,
+html.finn-darkmode iframe,
 html.finn-darkmode svg {
   filter: invert(1) hue-rotate(180deg) !important;
+}
+
+html.finn-darkmode #myads-root div[style*="background-image"]:empty:not([data-finn-dark-bg]) {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Elements with a CSS background image, tagged by content.js */
+html.finn-darkmode [data-finn-dark-bg] {
+  background-image: none !important;
+}
+
+html.finn-darkmode [data-finn-dark-bg]::before,
+html.finn-darkmode [data-finn-dark-bg]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-size: inherit;
+  background-position: inherit;
+  background-repeat: inherit;
+}
+
+html.finn-darkmode [data-finn-dark-bg]::before {
+  background-image: var(--finn-bg-url, none);
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.finn-darkmode [data-finn-dark-bg]::after {
+  background-image: var(--finn-bg-grad, none);
 }
