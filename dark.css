@@ -8,7 +8,6 @@ html.finn-darkmode {
 html.finn-darkmode img,
 html.finn-darkmode video,
 html.finn-darkmode canvas,
-html.finn-darkmode svg,
-html.finn-darkmode picture {
+html.finn-darkmode svg {
   filter: invert(1) hue-rotate(180deg) !important;
 }
