@@ -9,5 +9,5 @@ html.finn-darkmode img,
 html.finn-darkmode video,
 html.finn-darkmode canvas,
 html.finn-darkmode svg {
-  filter: invert(1) hue-rotate(180deg) !important;
+  filter: contrast(1.219512) brightness(0.892857) hue-rotate(180deg) invert(1) !important;
 }
