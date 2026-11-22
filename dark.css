@@ -1,7 +1,7 @@
 :root { color-scheme: dark; }
 
 html.finn-darkmode {
-  filter: invert(1) hue-rotate(180deg) brightness(1.12) contrast(0.82);
+  filter: invert(1) hue-rotate(180deg);
   background: #ffffff !important;
 }
 
@@ -9,5 +9,5 @@ html.finn-darkmode img,
 html.finn-darkmode video,
 html.finn-darkmode canvas,
 html.finn-darkmode svg {
-  filter: contrast(1.219512) brightness(0.892857) hue-rotate(180deg) invert(1) !important;
+  filter: invert(1) hue-rotate(180deg) !important;
 }
